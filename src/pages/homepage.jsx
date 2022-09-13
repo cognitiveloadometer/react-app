@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 import api from "../services/api"
 
 export const HomePage = ({setAuthenticated, setUserData, userData}) => {
+
     let responseName = ''
     let responseEmail = ''
 
@@ -29,12 +30,13 @@ export const HomePage = ({setAuthenticated, setUserData, userData}) => {
     }
 
     return(
-        <div className="App">
-        <GoogleOAuthProvider clientId="875942057415-d1bvi4i8t8qkv2eb4murottvre0sen4j.apps.googleusercontent.com">
+      <div className="App">
+        <button>Create Team</button>
+        <GoogleOAuthProvider clientId="510816376649-ts8v56n2rjvoglm6is11jlllufc2ujgc.apps.googleusercontent.com">
           <GoogleLogin
             onSuccess={responseGoogle}
             onError={responseGoogleError}
-          />;
+          />
         </GoogleOAuthProvider>
       </div>
     )
