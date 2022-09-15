@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useState } from "react";
 import { HomePage } from "../pages/homepage";
 import { Dashboard } from "../pages/dashboard";
+import { Form } from "../pages/form";
 
 export const Routes = () => {
     const [authenticated, setAuthenticated] = useState(false)
@@ -15,6 +16,10 @@ export const Routes = () => {
 
                 <Route exact path="/dashboard">
                     <Dashboard authenticated={authenticated} userData={userData}/>
+                </Route>
+
+                <Route exact path="/teams/:id">
+                    <Form />
                 </Route>
             </Switch>
         </BrowserRouter>

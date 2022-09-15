@@ -3,7 +3,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import api from "../services/api"
 
-export const HomePage = ({setAuthenticated, setUserData, userData}) => {
+export const HomePage = ({setAuthenticated, setUserData}) => {
 
     let responseName = ''
     let responseEmail = ''
@@ -21,7 +21,7 @@ export const HomePage = ({setAuthenticated, setUserData, userData}) => {
         email: responseEmail
       }
 
-      api.post(`/users/login`, data).then(response => setUserData(response.data)).catch(error => console.log(error.response.data))
+      await api.post(`/users/login`, data).then(response => setUserData(response.data)).catch(error => console.log(error.response.data))
       return setAuthenticated(true)
     }
 
@@ -31,8 +31,7 @@ export const HomePage = ({setAuthenticated, setUserData, userData}) => {
 
     return(
       <div className="App">
-        <button>Create Team</button>
-        <GoogleOAuthProvider clientId="510816376649-ts8v56n2rjvoglm6is11jlllufc2ujgc.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="875942057415-d1bvi4i8t8qkv2eb4murottvre0sen4j.apps.googleusercontent.com">
           <GoogleLogin
             onSuccess={responseGoogle}
             onError={responseGoogleError}
