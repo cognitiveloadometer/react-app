@@ -78,6 +78,9 @@ export const Box = styled.div`
     max-width: 50rem;
     height: 25em;
     overflow: auto;
+    @media screen and (max-height: 730px) {
+        height: 15em;
+    }
 `
 
 export const CardTeam = styled.div`
