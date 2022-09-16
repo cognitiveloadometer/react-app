@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://3.225.9.203:3030"
+    baseURL: "https://api-cognitive.onrender.com"
 })
 
 export default api
