@@ -12,7 +12,7 @@ export const Dashboard = ({userData, authenticated}) => {
     const baseURL = 'http://localhost:3000/'
 
     const loadTeams = async () => {
-        await api.get(`/teams/${userData.user.id}`, {
+        await api.get(`/teams/${userData?.user?.id}`, {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
