@@ -9,7 +9,7 @@ import '../css/GlobalStyle.css'
 export const Dashboard = ({userData, authenticated}) => {
     const [teamsData, setTeamsData] = useState([])
     const [createTeamInput, setCreateTeamInput] = useState("")
-    const baseURL = 'http://localhost:3000/'
+    const baseURL = 'http://cognitive-loadometer.vercel.app/'
 
     const loadTeams = async () => {
         await api.get(`/teams/${userData?.user?.id}`, {
