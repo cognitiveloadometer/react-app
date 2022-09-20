@@ -15,7 +15,7 @@ export const Routes = () => {
                 </Route>
 
                 <Route exact path="/dashboard">
-                    <Dashboard authenticated={authenticated} userData={userData}/>
+                    <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} userData={userData}/>
                 </Route>
 
                 <Route exact path="/teams/:id">
