@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import api from "../services/api"
 import { Background, Box, CardForm, CardTeam, Container, Content, CreateTeam, HeaderBox } from "../css/dashboard"
 import { BiAperture } from "react-icons/bi"
-import { CgCopy } from "react-icons/cg"
+// import { CgCopy } from "react-icons/cg"
+import { Teams } from "../components/teams"
 import '../css/GlobalStyle.css'
+import { ManageTeams } from "../components/manage teams"
 
-export const Dashboard = ({userData, authenticated}) => {
+export const Dashboard = ({userData, authenticated, setAuthenticated}) => {
     const [teamsData, setTeamsData] = useState([])
     const [createTeamInput, setCreateTeamInput] = useState("")
+    const [manageTeams, setManageTeams] = useState(false)
     const baseURL = 'http://cognitive-loadometer.vercel.app/'
 
     const loadTeams = async () => {
-        await api.get(`/teams/${userData?.user?.id}`, {
-            headers: {
-                Authorization: `Bearer ${userData.token}`
-            }
-        }).then(response => setTeamsData(response.data)).catch(error => console.log(error))
+        if (userData.user) {
+            await api.get(`/teams/${userData?.user?.id}`, {
+                headers: {
+                    Authorization: `Bearer ${userData.token}`
+                }
+            })
+            .then(response => setTeamsData(response.data))
+            .catch(error => console.log(error))
+        }
     }
 
     const createTeam = async () => {
@@ -45,22 +52,14 @@ export const Dashboard = ({userData, authenticated}) => {
                         <BiAperture color="#c0b7b7"  size={50}/>
                         <h1>Cognitive Loadometer</h1>
                     </div>
+                        <h3>Hello, {userData?.user?.name}</h3>
+                        <button onClick={() => setAuthenticated(false)}>Logout</button>
                 </HeaderBox>
+                <button onClick={() => setManageTeams(false)}>My teams</button>
+                <button onClick={() => setManageTeams(true)}>Manage teams</button>
                 <Content>
-                <CreateTeam>
-                    <h2>My teams:</h2>
-                    <div>
-                        <input onChange={(e) => setCreateTeamInput(e.target.value)} placeholder="Type here your team name..."/><button onClick={() => createTeam()}>Create team</button>
-                    </div>
-                </CreateTeam>
-                <Box>
-                    {teamsData.map(team =>
-                        <CardTeam key={team.id}>
-                            <h3>{team.name}</h3>
-                            <CardForm><CgCopy style={{cursor: 'pointer'}} onClick={() => {navigator.clipboard.writeText(`${baseURL}teams/${team.id}`)}} size={20} /><Link to={`/teams/${team.id}`}><p>{baseURL}teams/{team.id}</p></Link></CardForm>
-                        </CardTeam>
-                    )}
-                </Box>
+                    {!manageTeams && <Teams setCreateTeamInput={setCreateTeamInput} createTeam={createTeam} teamsData={teamsData} baseURL={baseURL}/>}
+                    {manageTeams && <ManageTeams userData={userData}/>}
                 </Content>
             </Container>
         </Background>
