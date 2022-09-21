@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom"
 import api from "../services/api"
 import { Background, Box, CardForm, CardTeam, Container, Content, CreateTeam, HeaderBox } from "../css/dashboard"
 import { BiAperture } from "react-icons/bi"
-// import { CgCopy } from "react-icons/cg"
 import { Teams } from "../components/teams"
 import '../css/GlobalStyle.css'
 import { ManageTeams } from "../components/manage teams"
