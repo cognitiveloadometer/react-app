@@ -33,6 +33,7 @@ export const Form = () => {
 
     return(
         <Background>
+            <h1>Please choose between 1 and 5</h1>
             {!returnMessage && 
             <Container>
                 <img src={cognitive} width="500px" alt="Subjective Cognitive Load Scale"/>
