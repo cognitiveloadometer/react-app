@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { Analytics } from "../analytics"
+import { CircleChart } from "../circle chart/teste";
 
 export const ManageTeams = ({ userData }) => {
     const [teamsData, setTeamsData] = useState([])
     const [inputOpt, setInputOpt] = useState('')
     const [loadometerData, setLoadometerData] = useState([])
+    let average = 0
 
     const [findTeam, setFindTeam] = useState({})
 
@@ -34,6 +36,7 @@ export const ManageTeams = ({ userData }) => {
     let loadometer = 0
     let mult = 0
 
+    // PERCORRENDO O ARRAY
     for(let i = 0; i < loadometerData.length; i++) {
         loadometer = loadometer + loadometerData[i].load
         date = loadometerData[i].createdat
@@ -48,14 +51,28 @@ export const ManageTeams = ({ userData }) => {
         }
     }
 
+    // const loadAverageOfLoads = () => {
+    //     let result = 0
+    //     let mult = 0
+    //     if (loadometerData.length > 0) {
+    //         for (let i = 0; i < loadometerData.length; i++) {
+    //             result = result + loadometerData[i].load
+    //             mult++
+    //         }
+    //     }
+    //     average = result / mult
+    // }
+
     const onSubmit = () => {
         const response = teamsData.find(team => team.name === inputOpt)
         setFindTeam(response)
         loadLoadometer(response)
+        // loadAverageOfLoads()
     }
 
     return (
         <>
+            <h3>Search by team name:</h3>
             <select onChange={(e) => setInputOpt(e.target.value)}>
                 <option selected></option>
                 {teamsData?.map(team => (
@@ -64,6 +81,10 @@ export const ManageTeams = ({ userData }) => {
                 )}
             </select>
             <button onClick={() => onSubmit()}>Submit</button>
+            <div>
+                <h1>Total Average of Loads:</h1>
+                <CircleChart loadometerData={loadometerData}/>
+            </div>
 
             <Analytics data={data} categories={categories}/>
 

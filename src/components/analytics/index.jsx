@@ -14,26 +14,33 @@ export const Analytics = ({ data, categories }) => {
             category.push(str)
         }
     }
-
-
+    
     return(
+        <>
         <Container>
-             <Line 
+            <div>
+             <Line
+             type="line"
                 data={{
                     labels: category,
                     datasets: [
                         {
-                            label: 'Average of Loads',
+                            label: 'Average of Loads Per Date',
                             data: data,
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: 'rgb(75, 192, 192)'
                         },
                     ],
                 }}
-                height={400}
-                width={600}
+                height={300}
+                width={500}
                 options= {{
                     maintainAspectRatio: false
                 }}
-            />
+             />
+            </div>
         </Container>
+        
+        </>
     )
 }
