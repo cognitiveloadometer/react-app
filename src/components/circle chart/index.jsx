@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 
 export function CircleChart({ loadometerData }) {
@@ -47,7 +47,7 @@ export function CircleChart({ loadometerData }) {
     <SemiCircleChart
       min={0}
       max={data.initial.value}
-      value={data.remaining.value}
+      value={data.remaining.value.toFixed(1)}
     />
   );
 }

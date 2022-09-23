@@ -79,7 +79,7 @@ export const HomePage = ({setAuthenticated, setUserData}) => {
                 </header>
                 <div>
                   <h2>Please, sign in to create your team!</h2>
-                  <GoogleOAuthProvider clientId={local_client_id}>
+                  <GoogleOAuthProvider clientId={deploy_client_id}>
                     <GoogleLogin
                       onSuccess={onSubmitModal}
                       onError={responseGoogleError}
@@ -95,7 +95,7 @@ export const HomePage = ({setAuthenticated, setUserData}) => {
           </div>
           
           <h2>Sign in with google:</h2>
-          <GoogleOAuthProvider clientId={local_client_id}>
+          <GoogleOAuthProvider clientId={deploy_client_id}>
             <GoogleLogin
               onSuccess={responseGoogle}
               onError={responseGoogleError}
