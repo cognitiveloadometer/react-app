@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { Analytics } from "../analytics"
+import { CircleChart } from "../circle chart";
 
 export const ManageTeams = ({ userData }) => {
     const [teamsData, setTeamsData] = useState([])
@@ -34,6 +35,7 @@ export const ManageTeams = ({ userData }) => {
     let loadometer = 0
     let mult = 0
 
+    // PERCORRENDO O ARRAY
     for(let i = 0; i < loadometerData.length; i++) {
         loadometer = loadometer + loadometerData[i].load
         date = loadometerData[i].createdat
@@ -56,6 +58,7 @@ export const ManageTeams = ({ userData }) => {
 
     return (
         <>
+            <h3>Search by team name:</h3>
             <select onChange={(e) => setInputOpt(e.target.value)}>
                 <option selected></option>
                 {teamsData?.map(team => (
@@ -64,9 +67,13 @@ export const ManageTeams = ({ userData }) => {
                 )}
             </select>
             <button onClick={() => onSubmit()}>Submit</button>
+            <div>
+                <h1>Total of Loads: {loadometerData.length}</h1>
+                <h2>Average of Loads:</h2>
+                <CircleChart loadometerData={loadometerData}/>
+            </div>
 
             <Analytics data={data} categories={categories}/>
-
         </>
     )
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { HomePage } from "../pages/homepage";
 import { Dashboard } from "../pages/dashboard";
 import { Form } from "../pages/form";
+import { FormInfo } from "../pages/formInfo";
 
 export const Routes = () => {
     const [authenticated, setAuthenticated] = useState(false)
@@ -20,6 +21,10 @@ export const Routes = () => {
 
                 <Route exact path="/teams/:id">
                     <Form />
+                </Route>
+
+                <Route exact path="/teams/:id/info">
+                    <FormInfo />
                 </Route>
             </Switch>
         </BrowserRouter>

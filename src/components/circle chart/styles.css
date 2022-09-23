@@ -1,0 +1,111 @@
+ 
+  .app {
+    font-family: sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .app > h1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .app > h2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .app > h3 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .app > p {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+  }
+  
+  :root {
+    --angle: 90deg;
+  }
+  
+  body {
+    background-color: #ffffff;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  code {
+    display: inline-block;
+    max-width: 600px;
+    padding: 0;
+    line-height: 1.5;
+    font-family: monospace;
+    color: #ccc;
+  }
+  
+  .sc-gauge {
+    width: 200px;
+    height: auto;
+    margin: 20px auto;
+  }
+  
+  .sc-background {
+    position: relative;
+    height: 100px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 150px 150px 0 0;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .sc-mask {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    height: 80px;
+    background-color: #E6E4E4;
+    border-radius: 150px 150px 0 0;
+  }
+  
+  .sc-percentage {
+    position: absolute;
+    top: 100px;
+    left: -200%;
+    width: 400%;
+    height: 400%;
+    margin-left: 100px;
+    background-color: #00aeef;
+  }
+  
+  .sc-percentage {
+    transform: rotate(var(--angle));
+    transform-origin: top center;
+  }
+  
+  .sc-min {
+    float: left;
+    color: black;
+  }
+  
+  .sc-max {
+    float: right;
+    color: black;
+  }
+  
+  .sc-value {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    font-size: 48px;
+    font-weight: 700;
+  }
+  
